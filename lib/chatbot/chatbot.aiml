@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <aiml version="1.0">
+
+    <category>
+      <pattern>I am fine *</pattern>
+      <template>
+        Sounds good !!!
+      </template>
+    </category>
+
+    <category>
+      <pattern>Thanks *</pattern>
+      <template>
+        Welcome !!
+      </template>
+    </category>
+    <category>
+      <pattern>Good Morning *</pattern>
+      <template>
+        Very Good  !!
+      </template>
+    </category>
+    <category>
+      <pattern>Valuelabs *</pattern>
+      <template>
+        We are a leading global technology company specializing in Digital Enablement and Product Development. Through our unique OneCompany model of engagement, we help companies unleash the potential of digital technology to achieve real business outcomes, make processes frictionless and lead in disruptive times. Our innovative solutions and a flexible engagement model help our clients stay ahead of the curve, drive revenues, and enhance market position. 
+
+        For more info: https://www.valuelabs.com/about-us/
+      </template>
+    </category>
+    <category>
+      <pattern>Thanks *</pattern>
+      <template>
+        Welcome !!
+      </template>
+    </category>
+  </aiml>

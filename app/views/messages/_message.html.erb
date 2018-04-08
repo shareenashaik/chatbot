@@ -1,0 +1,13 @@
+<%type = self_or_other(message)%>
+<li class="<%=  type %>">
+  <div class="avatar">
+  	<%image_url = type == "self" ? "https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png" : "https://image.slidesharecdn.com/communityorganisation-141114043528-conversion-gate02/95/community-organisation-4-638.jpg?cb=1465283704"%>
+    <img src="<%= image_url%>" />
+  </div>
+  <div class="chatboxmessagecontent">
+    <p><%= message.body %></p>
+    <time datetime="<%= message.created_at %>" title="<%= message.created_at.strftime("%d %b  %Y at %I:%M%p") %>">
+      <%= message_interlocutor(message).name %> • <%= message.created_at.strftime("%H:%M %p") %>
+    </time>
+  </div>
+</li>
