@@ -12,7 +12,6 @@ class AccountsController < ApplicationController
 	end
 
 	def sprint_bot
-		#binding.pry
 	end
 
 	def rz_bot

@@ -10,11 +10,14 @@ Rails.application.routes.draw do
     
     get 'sprint_bot', to: 'accounts#sprint_bot'
     get 'rz_bot', to: 'accounts#rz_bot'
+    get 'vmail_create', to: 'mails#new'
+    
 
     resources :conversations do
     resources :messages
   end
   resources :users
+  resources :mails
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

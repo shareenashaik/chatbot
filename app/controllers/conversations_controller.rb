@@ -20,7 +20,8 @@ class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
     @reciever = interlocutor(@conversation)
-    @messages = @conversation.messages
+    user = User.find_by_name "RZ"
+    @messages = [Message.new(:body => "Greetings, humans. My name is VL Bot", :created_at => Time.now, :user_id => user.id, :conversation_id => 1)]#@conversation.messages
     @message = Message.new
   end
 

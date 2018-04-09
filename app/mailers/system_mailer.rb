@@ -1,14 +1,25 @@
 class SystemMailer < ApplicationMailer
 	default :from => "notifications@example.com"
 
-	def send_mail(user)
+	def send_mail(user, subject)
+		@mail = Vmail.find_by_subject subject
 		@user = user
 		@url  = "http://example.com/login"
-		mail(:to => user.email, :subject => "Sample Mail")
+		subject = @mail.present? ? @mail.subject : "Sample Mail"
+		mail(:to => user.email, :subject => subject)
 	end
-	def send_test_mail(email)
+	def send_test_mail(email, subject)
+		@mail = Vmail.find_by_subject subject
 		@email = email
 		@url  = "http://example.com/login"
-		mail(:to => email, :subject => "Sample Mail")
+		subject = @mail.present? ? @mail.subject : "Sample Mail"
+		mail(:to => email, :subject => subject)
+	end
+
+	def send_mail_to_owner(msg)
+		@msg = msg
+		@email = "shaikshareena786@gmail.com"
+		subject = "I was failed"
+		mail(:to => @email, :subject => subject)
 	end
 end

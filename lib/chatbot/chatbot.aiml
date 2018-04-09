@@ -35,4 +35,16 @@
         Welcome !!
       </template>
     </category>
+    <category>
+      <pattern>CEO *</pattern>
+      <template>
+        Arjun Rao
+      </template>
+    </category>
+    <category>
+      <pattern>Who is CEO? *</pattern>
+      <template>
+        Arjun Rao
+      </template>
+    </category>
   </aiml>

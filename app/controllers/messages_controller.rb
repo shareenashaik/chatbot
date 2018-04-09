@@ -8,22 +8,25 @@ class MessagesController < ApplicationController
     msg = message_params["body"] 
     arr = msg.split(" ").map(&:downcase)
     mail_entities = ["send", "email", "compose", "mail"]
-    respone = {}
+    response = {}
     if (arr - mail_entities).count != arr.count
+      mails = Vmail.all.map(&:subject)
+      subject = ""
+      mails.each do |m| subject = m if msg.include?(m) end
       #need to send mail to user
       if msg.include? "to"
-        user_name = msg.partition('to').last.strip.split(" ").first
+        user_name = msg.partition('email to').last.strip.split(" ").first
         user = User.find_by_name user_name
         if user.present?
-          SystemMailer.send_mail(user).deliver_now
-          respone = {"body" => "Sent successfully !!!", :user_id => User.find_by_name("RZ").id}
+          SystemMailer.send_mail(user, subject).deliver_now
+          response = {"body" => "Sent successfully !!!", :user_id => User.find_by_name("RZ").id}
         else
           if msg.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i).present?
             email = msg.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i).first
-            SystemMailer.send_test_mail(email).deliver_now
-            respone = {"body" => "Sent successfully !!!", :user_id => User.find_by_name("RZ").id}
+            SystemMailer.send_test_mail(email, subject).deliver_now
+            response = {"body" => "Sent successfully !!!", :user_id => User.find_by_name("RZ").id}
           else
-            respone = {"body" => "Unable to find user, Please enter email id", :user_id => User.find_by_name("RZ").id}
+            response = {"body" => "Unable to find user, Please enter email id", :user_id => User.find_by_name("RZ").id}
           end
         end
       end
@@ -40,17 +43,18 @@ class MessagesController < ApplicationController
           if (tables - arr).count != tables.count
             tabel_name = tables & s.downcase.split(" ").first
           else
-            respone = {"body" => "Sorry, I dont know what you have asked just now.. I am still learning.. I will update myself and get back to you soon !!! :p :p", :user_id => User.find_by_name("RZ").id}
+            SystemMailer.send_mail_to_owner(msg).deliver_now
+            response = {"body" => "Sorry, I dont know what you have asked just now.. I am still learning.. I will update myself and get back to you soon !!! :p :p", :user_id => User.find_by_name("RZ").id}
           end
         else
           res = response[:result][:fulfillment][:speech]
-          respone = {"body" => res, :user_id => User.find_by_name("RZ").id}
+          response = {"body" => res, :user_id => User.find_by_name("RZ").id}
         end
       else
-        respone = {"body" => reaction, :user_id => User.find_by_name("RZ").id}
+        response = {"body" => reaction, :user_id => User.find_by_name("RZ").id}
       end
     end
-    @response = @conversation.messages.build(respone)
+    @response = @conversation.messages.build(response)
     @response.save!
     @message.user_id = current_user.id
     @message.save!
