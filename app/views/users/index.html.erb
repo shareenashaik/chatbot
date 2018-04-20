@@ -49,6 +49,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="#" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30 start-payroll-conversation">
+                                <i class="fa fa-long-arrow-right m-l-5"></i>
+                                Payroll Bot
+                            </a>
+                        </li>
+                        <li>
                             <a href="/mails" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
                                 <i class="fa fa-long-arrow-right m-l-5"></i>
                                 Mail Templates
@@ -71,6 +77,15 @@
 
         $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id }, function (data) {
             chatBox.chatWith(data.conversation_id);
+        });
+    });
+    $('.start-payroll-conversation').click(function (e) {
+        e.preventDefault();
+        var sender_id = $(this).data('sid');
+        var recipient_id = $(this).data('rip');
+
+        $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id, action_type: "payroll" }, function (data) {
+            chatBox.chatWith("payroll");
         });
     });
      $(document).on('click', '.toggleChatBox', function (e) {

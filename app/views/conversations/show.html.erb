@@ -1,4 +1,5 @@
-<div class="chatboxhead">
+<% unless params[:id] == "payroll"%>
+  <div class="chatboxhead">
   <div class="chatboxtitle">
     <i class="fa fa-comments"></i>
 
@@ -21,5 +22,11 @@
       <%= f.text_area :body, class: "chatboxtextarea", "data-cid" => @conversation.id, "placeholder" => "Enter text here.." %>
   <% end %>
 </div>
-
+<%else%>
+  <iframe
+    width="350"
+    height="430"
+    src="https://console.dialogflow.com/api-client/demo/embedded/6edaf7ee-3090-4683-b884-455cb6d93d2a">
+  </iframe>
+<%end%>
 <%= subscribe_to conversation_path(@conversation) %>

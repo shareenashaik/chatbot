@@ -6,6 +6,7 @@ class ConversationsController < ApplicationController
 
 
   def create
+    action_type = params["action_type"]
     params[:recipient_id] = User.last.id
     params[:sender_id] = User.first.id
     if Conversation.between(params[:sender_id],params[:recipient_id]).present?
@@ -14,11 +15,11 @@ class ConversationsController < ApplicationController
       @conversation = Conversation.create!(conversation_params)
     end
 
-    render json: { conversation_id: @conversation.id }
+    render json: { conversation_id: @conversation.id, action_type: action_type }
   end
 
   def show
-    @conversation = Conversation.find(params[:id])
+    @conversation = Conversation.find(1)
     @reciever = interlocutor(@conversation)
     user = User.find_by_name "RZ"
     @messages = [Message.new(:body => "Greetings, humans. My name is VL Bot", :created_at => Time.now, :user_id => user.id, :conversation_id => 1)]#@conversation.messages
