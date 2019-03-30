@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     resources :conversations do
     resources :messages
   end
-  resources :users
+  resources :users do
+    collection do
+      get :login
+    end
+  end
   resources :mails
 
   # The priority is based upon order of creation: first created -> highest priority.

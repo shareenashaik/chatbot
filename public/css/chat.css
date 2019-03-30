@@ -9,11 +9,11 @@
     position: expression("absolute");
     width: 280px;
     display: none;
-    right: 95px !important;
+    /*right: 95px !important;*/
 }
 
 .chatboxhead {
-    background: #666;
+    background: #86af2b;
     color: white;
     padding: 0.5rem;
     overflow: hidden;

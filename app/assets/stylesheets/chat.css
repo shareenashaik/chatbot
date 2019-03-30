@@ -7,13 +7,13 @@
 .chatbox {
     position: fixed;
     position: expression("absolute");
-    width: 510px;
+    width: 335px;
     display: none;
-    right: 95px !important;
+    /*right: 95px !important;*/
 }
 
 .chatboxhead {
-    background: #666;
+    background: #86af2b;
     color: white;
     padding: 0.5rem;
     overflow: hidden;
@@ -37,7 +37,7 @@
 .chatboxcontent {
     font-family: arial, sans-serif;
     height: 280px;
-    width: 510px;
+    width: 335px;
     overflow-y: auto;
     padding: 7px;
     border-left: 1px solid #cccccc;

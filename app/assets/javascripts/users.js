@@ -26,6 +26,7 @@ var ready = function () {
 
         var id = $(this).data('cid');
         chatBox.toggleChatBoxGrowth(id);
+
     });
 
     /**
@@ -66,5 +67,8 @@ var ready = function () {
 
 }
 
-$(document).ready(ready);
+$(document).ready({
+    debugger;
+    $('.start-conversation').trigger('click');
+});
 $(document).on("page:load", ready);

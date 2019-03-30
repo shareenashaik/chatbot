@@ -22,7 +22,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(1)
     @reciever = interlocutor(@conversation)
     user = User.find_by_name "RZ"
-    @messages = [Message.new(:body => "Greetings, humans. My name is VL Bot", :created_at => Time.now, :user_id => user.id, :conversation_id => 1)]#@conversation.messages
+    @messages = [Message.new(:body => "Greetings, humans. My name is RZ Bot", :created_at => Time.now, :user_id => user.id, :conversation_id => 1)]#@conversation.messages
     @message = Message.new
   end
 

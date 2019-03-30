@@ -6,6 +6,7 @@ class SystemMailer < ApplicationMailer
 		@user = user
 		@url  = "http://example.com/login"
 		subject = @mail.present? ? @mail.subject : "Sample Mail"
+		attachments["csv_file.csv"] = File.read("#{Rails.root}/public/exported_csv.csv")
 		mail(:to => user.email, :subject => subject)
 	end
 	def send_test_mail(email, subject)
@@ -13,6 +14,7 @@ class SystemMailer < ApplicationMailer
 		@email = email
 		@url  = "http://example.com/login"
 		subject = @mail.present? ? @mail.subject : "Sample Mail"
+		attachments["csv_file.csv"] = File.read("#{Rails.root}/public/exported_csv.csv")
 		mail(:to => email, :subject => subject)
 	end
 

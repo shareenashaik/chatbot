@@ -30,11 +30,14 @@ class MessagesController < ApplicationController
           end
         end
       end
+    elsif msg == "Annotate API calls count"
+      binding.pry
+      response = {"body" => "5", :user_id => User.find_by_name("RZ").id}
     else
       reaction = CHATBOT.get_reaction(message_params["body"])
       if reaction.blank?
         client = ApiAiRuby::Client.new(
-          :client_access_token => '8b0d6ed53fa846c9836f94b9a13bf150'
+          :client_access_token => '6b1674c23a6e4359a623a6d9f1ee0bb3'
         )
         response = client.text_request message_params["body"]
         if response[:result][:action] == "input.unknown"
@@ -44,7 +47,7 @@ class MessagesController < ApplicationController
             tabel_name = tables & s.downcase.split(" ").first
           else
             SystemMailer.send_mail_to_owner(msg).deliver_now
-            response = {"body" => "Sorry, I dont know what you have asked just now.. I am still learning.. I will update myself and get back to you soon !!! :p :p", :user_id => User.find_by_name("RZ").id}
+            response = {"body" => "Sorry, I dont know what you have asked just now.. I am still learning.. I will update myself and get back to you soon !!!", :user_id => User.find_by_name("RZ").id}
           end
         else
           res = response[:result][:fulfillment][:speech]

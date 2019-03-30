@@ -22,11 +22,9 @@
       </template>
     </category>
     <category>
-      <pattern>Valuelabs *</pattern>
+      <pattern>What is RoyaltyZone? *</pattern>
       <template>
-        We are a leading global technology company specializing in Digital Enablement and Product Development. Through our unique OneCompany model of engagement, we help companies unleash the potential of digital technology to achieve real business outcomes, make processes frictionless and lead in disruptive times. Our innovative solutions and a flexible engagement model help our clients stay ahead of the curve, drive revenues, and enhance market position. 
-
-        For more info: https://www.valuelabs.com/about-us/
+        RoyaltyZone is affordable web based licensing software that simplifies rights and royalty management for Licensors, Agents, and Licensees. RoyaltyZone is so easy to use, you’ll be managing contracts, tracking products, creating invoices, calculating royalties, and analyzing the performance of your entire licensing program in less than 30 days!
       </template>
     </category>
     <category>
@@ -36,15 +34,27 @@
       </template>
     </category>
     <category>
-      <pattern>CEO *</pattern>
+      <pattern>Owner *</pattern>
       <template>
-        Arjun Rao
+        FIlmTrack
       </template>
     </category>
     <category>
-      <pattern>Who is CEO? *</pattern>
+      <pattern>Who is owner? *</pattern>
       <template>
-        Arjun Rao
+        FIlmTrack
+      </template>
+    </category>
+    <category>
+      <pattern>Who will be the licensor? *</pattern>
+      <template>
+        Licensor can be a company and who receives the royalties.
+      </template>
+    </category>
+    <category>
+      <pattern>Who will be the licensee? *</pattern>
+      <template>
+        Licensee will pay the royalties to the licensors.
       </template>
     </category>
   </aiml>
